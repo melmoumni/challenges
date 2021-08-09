@@ -108,3 +108,45 @@ The metrics should be grouped by the following dimensions:
 On top of computing the metrics listed above, the following operations must be run:
 
 - Deduplication of events based on event ID
+
+## Deliverables 
+### Environment setup
+####Install pyspark
+```bash
+pip install pyspark (installs spark 3.1.2)
+```
+####Install pytest
+```bash
+pip install pytest pyspark-test
+```
+###Run the app
+The app can be executed using spark-submit
+```bash
+usage: spark-submit --py-files functions.py main.py [-h] -m METRICS [METRICS ...] -i PATH
+
+mandatory arguments:
+-m METRICS [METRICS ...], --metrics METRICS [METRICS ...]
+                 list of metrics to compute, available metrics are:
+                 pageviews, pageviews_with_consent, consents_asked,
+                 consents_given, consents_given_with_consent,
+                 avg_pageviews_per_user
+-i PATH, --input PATH
+                 input path. The path can be either a single json file
+                 or a directory storing multiple json files. Wildcards (*) usage
+                 is possible                                     
+optional arguments:
+-h, --help            show this help message and exit
+
+```
+Examples:
+```bash
+# computes pageviews metri only
+spark-submit --py-files functions.py main.py -m pageviews -i /my/input/path/datehour=*/*.json
+# computes pageviews and avg_pageviews_per_user
+spark-submit --py-files functions.py main.py -m pageviews avg_pageviews_per_user -i /my/input/path/datehour=*/*.json
+```
+
+###Run the tests
+```bash
+pytest --no-header -v
+``` 
