@@ -111,15 +111,15 @@ On top of computing the metrics listed above, the following operations must be r
 
 ## Deliverables 
 ### Environment setup
-####Install pyspark
+Install pyspark
 ```bash
 pip install pyspark (installs spark 3.1.2)
 ```
-####Install pytest
+Install pytest
 ```bash
 pip install pytest pyspark-test
 ```
-###Run the app
+### Run the app
 The app can be executed using spark-submit
 ```bash
 usage: spark-submit --py-files functions.py main.py [-h] -m METRICS [METRICS ...] -i PATH
@@ -146,7 +146,7 @@ spark-submit --py-files functions.py main.py -m pageviews -i /my/input/path/date
 spark-submit --py-files functions.py main.py -m pageviews avg_pageviews_per_user -i /my/input/path/datehour=*/*.json
 ```
 
-###Run the tests
+### Run the tests
 ```bash
 pytest --no-header -v
 ``` 
