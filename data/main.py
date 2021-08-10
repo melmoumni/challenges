@@ -13,8 +13,9 @@ parser.add_argument("-m","--metrics", dest="metrics", type= str, required=True, 
 
                     )
 
-parser.add_argument("-i","--input", dest="path", type= str, required=True
-                    ,help="input path. The path can be either a single json file or a directory storing json files. Wildcards (*) usage is possible")
+parser.add_argument("-i","--input", dest="paths", type= str, required=True, nargs="+"
+                    ,help="input paths. The path can be either a single json file or a path pattern of a "
+                          "directory storing multiple json files (/my/path/*.json). Wildcards (*) usage is possible")
 
 args = parser.parse_args()
 
@@ -28,7 +29,7 @@ spark = SparkSession.builder \
 
 
 # Read input data
-df = read_input(spark, args.path)
+df = read_input(spark, args.paths)
 
 # Compute metrics
 if "pageviews" in args.metrics:

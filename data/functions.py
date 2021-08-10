@@ -2,10 +2,11 @@ from pyspark.sql import SparkSession
 from pyspark.sql import DataFrame
 from pyspark.sql.types import *
 from pyspark.sql.functions import *
+from typing import List
 import argparse
 
 
-def read_input(spark: SparkSession, inputPath: str) -> DataFrame:
+def read_input(spark: SparkSession, inputPaths: List[str]) -> DataFrame:
     """
     Reads input events.
     Parses the user.token json string and exposes its fields as
@@ -41,7 +42,7 @@ def read_input(spark: SparkSession, inputPath: str) -> DataFrame:
         ]))
     ])
 
-    df = spark.read.schema(schema).json(inputPath)
+    df = spark.read.schema(schema).json(inputPaths)
     # Add a column with parsed token json string
     df_parsed = df.withColumn("parsedToken",from_json(df.user.token,tokenSchema))
     df_parsed_deduplicated = df_parsed.dropDuplicates(["id"])

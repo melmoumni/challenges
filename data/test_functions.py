@@ -37,6 +37,27 @@ def test_pageviews(spark_session):
                 "disabled": []
             }
         }
+    },
+    {
+        "datetime": "2021-01-23 11:05:07",
+        "id": "94cabac0-083c-43d3-976a-88756d21132a",
+        "type": "consent.given",
+        "domain": "www.website.com",
+        "user": {
+            "id": "09fcb803-2779-4096-bcfd-0fb1afef684a",
+            "country": "US",
+            "token": "{\"vendors\":{\"enabled\":[\"vendor\"],\"disabled\":[]},\"purposes\":{\"enabled\":[\"analytics\"],\"disabled\":[]}}",
+        },
+        "parsedToken": {
+            "vendors": {
+                "enabled": ["vendor"],
+                "disabled": []
+            },
+            "purposes": {
+                "enabled": ["analytics"],
+                "disabled": []
+            }
+        }
     }
     ]
     expected_data = [{"dateHour": "2021-01-23-11", "domain": "www.website.com", "country": "US", "count": 1}]
@@ -52,6 +73,27 @@ def test_consents_asked(spark_session):
         "datetime": "2021-01-23 11:05:07",
         "id": "94cabac0-088c-43d3-976a-88756d21132a",
         "type": "consent.asked",
+        "domain": "www.website.com",
+        "user": {
+            "id": "09fcb803-2779-4096-bcfd-0fb1afef684a",
+            "country": "FR",
+            "token": "{\"vendors\":{\"enabled\":[\"vendor\"],\"disabled\":[]},\"purposes\":{\"enabled\":[\"analytics\"],\"disabled\":[]}}",
+        },
+        "parsedToken": {
+            "vendors": {
+                "enabled": ["vendor"],
+                "disabled": []
+            },
+            "purposes": {
+                "enabled": ["analytics"],
+                "disabled": []
+            }
+        }
+    },
+    {
+        "datetime": "2021-01-23 11:05:07",
+        "id": "94cabac0-288c-43d3-976a-88756d21132a",
+        "type": "pageview",
         "domain": "www.website.com",
         "user": {
             "id": "09fcb803-2779-4096-bcfd-0fb1afef684a",
@@ -98,6 +140,27 @@ def test_consents_given(spark_session):
                 "disabled": []
             }
         }
+    },
+    {
+        "datetime": "2021-01-23 11:05:07",
+        "id": "94cabac0-088f-43d3-976a-88756d21132a",
+        "type": "consent.asked",
+        "domain": "www.website.com",
+        "user": {
+            "id": "09fcb803-2779-4096-bcfd-0fb1afef684a",
+            "country": "ES",
+            "token": "{\"vendors\":{\"enabled\":[\"vendor\"],\"disabled\":[]},\"purposes\":{\"enabled\":[\"analytics\"],\"disabled\":[]}}",
+        },
+        "parsedToken": {
+            "vendors": {
+                "enabled": ["vendor"],
+                "disabled": []
+            },
+            "purposes": {
+                "enabled": ["analytics"],
+                "disabled": []
+            }
+        }
     }
     ]
     expected_data = [{"dateHour": "2021-01-23-11", "domain": "www.website.com", "country": "ES", "count": 1}]
@@ -128,6 +191,48 @@ def test_pageviews_with_consent(spark_session):
                 "disabled": []
             }
         }
+    },
+    {
+        "datetime": "2021-01-23 11:05:07",
+        "id": "97cabac0-088c-43d3-976a-88756d21132a",
+        "type": "pageview",
+        "domain": "www.website.com",
+        "user": {
+            "id": "09fcb803-2779-4096-bcfd-0fb1afef684a",
+            "country": "ES",
+            "token": "{\"vendors\":{\"enabled\":[\"vendor\"],\"disabled\":[]},\"purposes\":{\"enabled\":[\"analytics\"],\"disabled\":[]}}",
+        },
+        "parsedToken": {
+            "vendors": {
+                "enabled": ["vendor"],
+                "disabled": []
+            },
+            "purposes": {
+                "enabled": [],
+                "disabled": []
+            }
+        }
+    },
+    {
+        "datetime": "2021-01-23 11:05:07",
+        "id": "34cabac0-088c-43d3-976a-88756d21132a",
+        "type": "consent.given",
+        "domain": "www.website.com",
+        "user": {
+            "id": "09fcb803-2779-4096-bcfd-0fb1afef684a",
+            "country": "ES",
+            "token": "{\"vendors\":{\"enabled\":[\"vendor\"],\"disabled\":[]},\"purposes\":{\"enabled\":[\"analytics\"],\"disabled\":[]}}",
+        },
+        "parsedToken": {
+            "vendors": {
+                "enabled": ["vendor"],
+                "disabled": []
+            },
+            "purposes": {
+                "enabled": ["analytics"],
+                "disabled": []
+            }
+        }
     }
     ]
     expected_data = [{"dateHour": "2021-01-23-11", "domain": "www.website.com", "country": "ES", "count": 1}]
@@ -142,6 +247,48 @@ def test_consents_given_with_consent(spark_session):
         "datetime": "2021-01-23 11:05:07",
         "id": "94cabac0-088c-43d3-976a-88756d21132a",
         "type": "consent.given",
+        "domain": "www.website.com",
+        "user": {
+            "id": "09fcb803-2779-4096-bcfd-0fb1afef684a",
+            "country": "ES",
+            "token": "{\"vendors\":{\"enabled\":[\"vendor\"],\"disabled\":[]},\"purposes\":{\"enabled\":[\"analytics\"],\"disabled\":[]}}",
+        },
+        "parsedToken": {
+            "vendors": {
+                "enabled": ["vendor"],
+                "disabled": []
+            },
+            "purposes": {
+                "enabled": ["analytics"],
+                "disabled": []
+            }
+        }
+    },
+    {
+        "datetime": "2021-01-23 11:05:07",
+        "id": "94cbbac0-088c-43d3-976a-88756d21132a",
+        "type": "consent.given",
+        "domain": "www.website.com",
+        "user": {
+            "id": "09fcb803-2779-4096-bcfd-0fb1afef684a",
+            "country": "ES",
+            "token": "{\"vendors\":{\"enabled\":[\"vendor\"],\"disabled\":[]},\"purposes\":{\"enabled\":[\"analytics\"],\"disabled\":[]}}",
+        },
+        "parsedToken": {
+            "vendors": {
+                "enabled": ["vendor"],
+                "disabled": []
+            },
+            "purposes": {
+                "enabled": [],
+                "disabled": []
+            }
+        }
+    },
+    {
+        "datetime": "2021-01-23 11:05:07",
+        "id": "94cbbzc0-088c-43d3-976a-88756d21132a",
+        "type": "pageview",
         "domain": "www.website.com",
         "user": {
             "id": "09fcb803-2779-4096-bcfd-0fb1afef684a",

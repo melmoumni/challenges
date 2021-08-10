@@ -122,7 +122,7 @@ pip install pytest pyspark-test
 ### Run the app
 The app can be executed using spark-submit
 ```bash
-usage: spark-submit --py-files functions.py main.py [-h] -m METRICS [METRICS ...] -i PATH
+usage: spark-submit --py-files functions.py main.py [-h] -m METRICS [METRICS ...] -i PATHS [PATHS ...]
 
 mandatory arguments:
 -m METRICS [METRICS ...], --metrics METRICS [METRICS ...]
@@ -130,9 +130,9 @@ mandatory arguments:
                  pageviews, pageviews_with_consent, consents_asked,
                  consents_given, consents_given_with_consent,
                  avg_pageviews_per_user
--i PATH, --input PATH
-                 input path. The path can be either a single json file
-                 or a directory storing multiple json files. Wildcards (*) usage
+-i PATHS [PATHS ...], --input PATHS [PATHS ...]
+                 input paths. The path can be either a single json file
+                 or a path pattern of a directory storing multiple json files (/my/path/*.json). Wildcards (*) usage
                  is possible                                     
 optional arguments:
 -h, --help            show this help message and exit
@@ -141,9 +141,9 @@ optional arguments:
 Examples:
 ```bash
 # computes pageviews metri only
-spark-submit --py-files functions.py main.py -m pageviews -i /my/input/path/datehour=*/*.json
+spark-submit --py-files functions.py main.py -m pageviews -i /my/input/path/datehour=2021-01-23-10/*.json /my/input/path/datehour=2021-01-23-11/*.json
 # computes pageviews and avg_pageviews_per_user
-spark-submit --py-files functions.py main.py -m pageviews avg_pageviews_per_user -i /my/input/path/datehour=*/*.json
+spark-submit --py-files functions.py main.py -m pageviews avg_pageviews_per_user -i /my/input/path/datehour=2021-01-23-10/*.json /my/input/path/datehour=2021-01-23-11/*.json
 ```
 
 ### Run the tests
