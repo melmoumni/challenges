@@ -109,7 +109,9 @@ On top of computing the metrics listed above, the following operations must be r
 
 - Deduplication of events based on event ID
 
-## Deliverables 
+## Howto run the app?
+The app was tested using spark 3.1.2 (pyspark)
+Tests were implemented using [pytest](https://docs.pytest.org/en/6.2.x/) and [pyspark-test](https://github.com/debugger24/pyspark-test) were used
 ### Environment setup
 Install pyspark
 ```bash
@@ -120,7 +122,8 @@ Install pytest
 pip install pytest pyspark-test
 ```
 ### Run the app
-The app can be executed using spark-submit
+The app can be executed using spark-submit.
+The app was tested locally only (--master local[*])
 ```bash
 usage: spark-submit --py-files functions.py main.py [-h] -m METRICS [METRICS ...] -i PATHS [PATHS ...]
 
